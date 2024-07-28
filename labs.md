@@ -1,22 +1,52 @@
-# DIY Gen AI
-## Setting up your own LLM host, chat, and AI server using LM Studio - half-day workshop
+# Generative AI for Developers Deep Dive
+## Understanding key Gen AI concepts - full-day workshop
 ## Session labs 
-## Revision 1.4 - 07/07/24
+## Revision 1.1 - 07/28/24
 
 **Follow the startup instructions in the README.md file IF NOT ALREADY DONE!**
 
-**NOTE: To copy and paste in the codespace, you may need to use keyboard commands - CTRL-C and CTRL-V.**
+**NOTE: To copy and paste in the codespace, you may need to use keyboard commands - CTRL-C and CTRL-V. Chrome may work best for this.**
 
 **NOTE: You may see periodic "Reconnecting" messages pop up. This is normal and they will go away shortly.**
 
 **NOTE: To get a closer view of the LM Studio App, you can click on the *View* menu at the top and then click on *Zoom In*.**
 ![Zooming in](./images/dga42.png?raw=true "Zooming in")
 
-**Lab 1 - Getting familiar with LM Studio and models**
+**Lab 1 - Working with Neural Networks**
 
-**Purpose: In this lab, we’ll start to learn about models through working with one in LM Studio.**
+**Purpose: In this lab, we’ll learn more about neural networks by seeing how one is coded and .**
 
-1. In the Codespace's terminal, run the script *./getlink.sh*. This will output a link that you can click on to get to the LM Studio instance. Use *Ctrl/Cmd+Click* to open the browser session. 
+1. In our repository, we have a simple neural net coded in Python. The file name is simple_nn.py. Open the file either by clicking on [**gen-ai-dd/simple-nn.py**](./gen-ai-dd/simple-nn.py) or by entering the command below in the codespace's terminal.
+
+```
+code simple_nn.py
+```
+
+2. Notice the *training_inputs* data and the *training_outputs* data. Each row of the *training_outputs* is what we want the model to predict for the corresponding input row. As coded, the output for the input is just the first element of the array.  For inputs [0,0,1] we are trying to train the model to predict [0]. For the inputs [1,0,1], we are trying to train the model to predict [1], etc.
+
+3. When we run the program, it will train the neural net to try and predict the outputs corresponding to the inputs. You will see the random training weights to start and then the adjusted weights to make the model predict the output. You will then be prompted to put in your own training data. We'll look at that in the next step. For now, go ahead and run the program (command below) but don't put in any inputs yet.
+
+```
+python simple_nn.py
+```
+4. What you should see is that the weights after training are now set in a way that makes it more likely that the result will match the expected output value. To prove this out, you can enter your own input set - just use 1's and 0's for each input. 
+
+5. After you put in your inputs, the neural net will process your input and because of the training, it should predict a result that is close to the first input value you entered (the one for *Input one*).
+
+6. Now, let's see what happens if we change the expected outputs to be different. In the editor for the simple_nn.py file, find the line for the *training_outputs*. Modify the values in the array to be ([[0],[1],[0],[1]]]). These are the values of the second element in each of the training data entries. After you're done, save your changes.
+
+7. Now, run the neural net again. This time when the weights after training are shown, you should see a bias for a higher weight for the second item.
+```
+python simple_nn.py
+```
+
+8. At the input prompts, just input any sequence of 0's and 1's as before.
+
+9. When the trained model then processes your inputs, you should see that it predicts a value that is close to 0 or 1 depending on what your second input was.
+
+10. If you get done early, feel free to try other combinations of training inputs and training outputs.
+    
+12. , run the script *./getlink.sh*. This will output a link that you can click on to get to the LM Studio instance. Use *Ctrl/Cmd+Click* to open the browser session. 
 
 ![Getting to LM Studio](./images/dga08b.png?raw=true "Getting to LM Studio") 
 
