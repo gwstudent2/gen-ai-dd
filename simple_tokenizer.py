@@ -1,6 +1,9 @@
+import sys
+
 from transformers import AutoTokenizer
- 
-tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+
+model_name = sys.argv[1]
+tokenizer = AutoTokenizer.from_pretrained(model_name)
  
 text = input("Enter text: ")
 tokenized_text = tokenizer.tokenize(text)
