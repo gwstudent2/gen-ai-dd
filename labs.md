@@ -46,84 +46,46 @@ python simple_nn.py
 
 10. If you get done early, feel free to try other combinations of training inputs and training outputs.
     
-12. , run the script *./getlink.sh*. This will output a link that you can click on to get to the LM Studio instance. Use *Ctrl/Cmd+Click* to open the browser session. 
-
-![Getting to LM Studio](./images/dga08b.png?raw=true "Getting to LM Studio") 
-
-</br></br>
-*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NOTE: Alternate method to get to LM Studio (only need to use if having trouble with above - otherwise, go to Step 2):*
-
-*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click on the *PORTS* tab (next to *TERMINAL*) in the lower part of the codespace screen. Hover the mouse over the *globe* icon and click on it to open up a new browser tab running noVNC.* 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Getting to LM Studio](./images/dga58.png?raw=true "Getting to LM Studio")
-
-*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Then click on the *Connect* button.*
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Getting to LM Studio](./images/dga59.png?raw=true "Getting to LM Studio")
-
-</br></br>
-
-2. After that, you should see the running instance of LM Studio. You'll probably be at the *Release Notes* screen. Just click the *Close* button.
-
-![LM Studio instance](./images/dga10.png?raw=true "LM Studio instance")   
-
-3. Scroll around the home page of the app to see the examples of recent models featured there. When done, just scroll back up to the top.
-
-![LM Studio models on home page](./images/dga41.png?raw=true "LM Studio models on home page")
-
-
-4. Now we're going to search using LM Studio for a particular model - *llama*. Enter *llama* into the search bar and then click the *Go* button.
-```
-llama
-```
-
-![llama search](./images/dga11a.png?raw=true "llama search")   
-
-5. After the search is run, you'll see a list of *llama* models displayed on the left and different versions of them displayed on the right. You can hover over some of the items like the *Q* identifiers in the items on the right to get more info.
-
-![llama model info](./images/dga12a.png?raw=true "llama model info")  
-
-6. LM Studio also displays some information to help you decide about which model version to use. There's an expandable section near the bottom under *Learn more*. Click to expand that and you read more about the differences in quantization level.
-
-![Learning more](./images/dga13a.png?raw=true "Learning more")  
-
-7. You can also expand the README about the model to get more details about it's attributes, license, etc. To do that, click on the expand button in the row for *README.md* and scroll through its contents.
-
-![Viewing the README](./images/dga15a.png?raw=true "Viewing the README") 
-
-8. Now, let's actually download one of the models. Back in the list, collapse the expanded *README* and *Learn more* sections. In the left column, select the row for the *TheBloke/Llama-2-7B-Chat-GGUF* file. In the right column, select the row for the *llama-2-7b-chat.Q3_K_M.gguf* file and click the *Download* button. You'll see a progress bar at the bottom of the screen and an indication in the row when it is completely downloaded.
-
-![Downloading the model](./images/dga16.png?raw=true "Downloading the model") 
-![Downloaded the model](./images/dga17.png?raw=true "Downloaded the model")
-
-9. Now let's take a look at the model we downloaded on the community site https://huggingface.co/models. Open that link in a separate tab and you'll see some of the different types of models and various models available for download and use.
-![huggingface](./images/dga18.png?raw=true "huggingface")
-
-10. In the search bar on https://huggingface.co/models, enter enough of the name of the model *thebloke/llama-2-* and select the page for the model *TheBloke/Llama-2-7B-Chat-GGUF*.
-
-![finding the model repo](./images/dga19a.png?raw=true "finding the model repo")
-
-11. You'll now be on the *model card* page for *TheBloke/Llama-2-7B-Chat-GGUF* repository. You can scroll down and find additional details, directions for use, example uses, etc. about the models in this repository.
-
-![exploring the model repo](./images/dga20a.png?raw=true "exploring the model repo")
-
-12. You can also take a look at the *Files and versions* page.
-    
-![exploring the model repo](./images/dga21a.png?raw=true "exploring the model repo")
-
 <p align="center">
 **[END OF LAB]**
 </p>
 </br></br>
 
-**Lab 2 - Chatting with our model**
+**Lab 2 - Experimenting with Tokenization**
 
-**Purpose: In this lab, we'll see how to load and interact with the model through chat and terminal.**
+**Purpose: In this lab, we'll see how different models do tokenization.**
 
-1. First, let's switch to the *AI Chat* interface in LM Studio by clicking on the third icon from the top in the left bar.
-   
-![Switching to chat](./images/dga22.png?raw=true "Switching to chat")
+1. In our repository, we have a simple program that can load a model and print out tokens generated by it. The file name is simple_tokenizer.py. You can view the file either by clicking on [**gen-ai-dd/simple-tokenizer.py**](./gen-ai-dd/simple-tokenizer.py) or by entering the command below in the codespace's terminal.
 
+```
+code simple_tokenizer.py
+```
+2. This program can be run and passed a model to use for tokenization. To start, we'll be using a model named *bert-base-uncased*. Let's look at this model on huggingface.co.  Go to https://huggingface.co and in the Models search area, type in *bert-base-uncased*. Select the entry for *google-bert/bert-base-uncased*.
+
+3. Take a look at the model card for the model. Then take a look at the Files and Community tabs.
+
+4. Now let's run the simple_tokenizer program with the bert-base-uncased model. Enter the command below.
+```
+python simple_tokenizer.py bert-base-uncased
+```
+5. After the program starts, you will be at a prompt to *Enter text*. Enter in some text like the following to see how it will be tokenized.
+```
+This is sample text for tokenization and text for embeddings.
+```
+6. After you enter this, you'll see the various subword tokens that were extracted from the text you entered. And you'll also see the ids for the tokens stored in the model that matched the subwords.
+
+7. Next, you can try out some other models. Repeat steps 4 - 6 for other tokenizers like the following.
+```
+python simple_tokenizer.py roberta-base
+python simple_tokenizer.py gpt2
+python simple_tokenizer.py xlnet-large-cased
+```
+
+**Lab 3 - Understanding vectors and similarity measures**
+
+**Purpose: In this lab, we'll see how tokens get mapped to vectors and how vectors can be compared.**
+
+1. 
 2. Now, at the top center of the *AI Chat* screen, click on the down arrow next to the *Select a model to load* text and select the *llama* model we downloaded.
    
 ![Switching to chat](./images/dga23a.png?raw=true "Switching to chat")
