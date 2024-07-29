@@ -81,12 +81,30 @@ python simple_tokenizer.py gpt2
 python simple_tokenizer.py xlnet-large-cased
 ```
 
-**Lab 3 - Understanding vectors and similarity measures**
+**Lab 3 - Understanding embeddings, vectors and similarity measures**
 
 **Purpose: In this lab, we'll see how tokens get mapped to vectors and how vectors can be compared.**
 
-1. 
-2. Now, at the top center of the *AI Chat* screen, click on the down arrow next to the *Select a model to load* text and select the *llama* model we downloaded.
+1. In the repository, we have a Python program that uses a Tokenizer and Model to create embeddings for three terms that you input and then computes and displays the cosine similarity between each combination. Open the file to look at it by clicking on the link for  or by using the command below in the terminal.
+```
+code simple_vectors.py
+```
+2. Let's run the program and input three words. You can try two closely related words and one that is not closely related. For example
+   - king
+   - queen
+   - duck
+
+3. Once you enter the terms, you'll see the first 10 dimensions for each term. And then you'll see the cosine similarity displayed.
+
+4. Now, let's try another set of terms that are more closely related, like *multiplication*, *division*, *addition*.
+
+5. We can also try words that are very close like *embeddings*, *tokenization*, *subwords*.
+
+6. TO-DO: see if you can figure out how to load a quantized model with 4 bit or such in simple_vectors.py and then show dimensions having less digits.
+
+
+
+8. Now, at the top center of the *AI Chat* screen, click on the down arrow next to the *Select a model to load* text and select the *llama* model we downloaded.
    
 ![Switching to chat](./images/dga23a.png?raw=true "Switching to chat")
   
