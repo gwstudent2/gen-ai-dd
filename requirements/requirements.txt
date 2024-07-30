@@ -12,3 +12,5 @@ sentence_transformers
 duckduckgo_search
 crewai
 crewai_tools
+chromadb
+sentence_transformers
