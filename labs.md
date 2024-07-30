@@ -89,22 +89,37 @@ python simple_tokenizer.py xlnet-large-cased
 ```
 code simple_vectors.py
 ```
-2. Let's run the program and input three words. You can try two closely related words and one that is not closely related. For example
+2. Let's run the program. As we did for the tokenizer example, we'll pass in a model to use. We'll also pass in a second argument which is the number of dimensions from the vector for each term to show. Run the program with the command below.
+```
+python simple_vectors.py bert-base-cased 5
+```
+3. The command we just ran loads up the bert-base-cased model and tells it to show the first 5 dimensions of each vector for the terms we enter. The program will be prompting you for three terms. Enter each one in turn. You can try two closely related words and one that is not closely related. For example
    - king
    - queen
    - duck
 
-3. Once you enter the terms, you'll see the first 10 dimensions for each term. And then you'll see the cosine similarity displayed.
+4. Once you enter the terms, you'll see the first 5 dimensions for each term. And then you'll see the cosine similarity displayed between each possible pair. This is how similar each pair of words is. The two that are most similar should have a higher cosine similarity "score".
 
-4. Now, let's try another set of terms that are more closely related, like *multiplication*, *division*, *addition*.
+5. Each vector in the bert-based models have 768 dimensions. Let's run the program again and tell it to display 768 dimensions for each of the three terms.  Also, you can try another set of terms that are more closely related, like *multiplication*, *division*, *addition*.
+```
+python simple_vectors.py bert-base-cased 5
+```
+6. You should see that the cosine similarities for all pair combinations are high this time.
 
-5. We can also try words that are very close like *embeddings*, *tokenization*, *subwords*.
+7. As part of the output from the program, you'll also see the *token id* for each term. If you're using the same model as you did in lab 2 for tokenization, the ids will be the same. You can actually see where these mappings are stored if you look at the model on Hugging Face. For instance, for the *bert-base-cased* model, you can go to https://huggingface.co and search for bert-base-cased. Select the entry for google-bert/bert-base-cased.
 
-6. TO-DO: see if you can figure out how to load a quantized model with 4 bit or such in simple_vectors.py and then show dimensions having less digits.
+8. On the page for the model, click on the *Files* tab. Then find the file *tokenizer.json* and click on it. The file will be too large to display, so click on the *check the raw version* link to see the actual content.
+
+9. You can search for the terms you entered previously with a Ctrl-F or Cmd-F and find the mapping between the term and the id. If you look for "##" you'll see mappings for parts of tokens like you may have seen in lab 2.
+
+10. If you want, you can try running the *simple_vectors.py* program with a different model to see results from other models.
+11. We can also try words that are very close like *embeddings*, *tokenization*, *subwords*.
+
+12. TO-DO: see if you can figure out how to load a quantized model with 4 bit or such in simple_vectors.py and then show dimensions having less digits.
 
 
 
-8. Now, at the top center of the *AI Chat* screen, click on the down arrow next to the *Select a model to load* text and select the *llama* model we downloaded.
+13. Now, at the top center of the *AI Chat* screen, click on the down arrow next to the *Select a model to load* text and select the *llama* model we downloaded.
    
 ![Switching to chat](./images/dga23a.png?raw=true "Switching to chat")
   
