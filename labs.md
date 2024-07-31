@@ -102,37 +102,53 @@ python simple_tokenizer.py xlnet-large-cased
 
 **Purpose: In this lab, we'll see how tokens get mapped to vectors and how vectors can be compared.**
 
-1. In the repository, we have a Python program that uses a Tokenizer and Model to create embeddings for three terms that you input and then computes and displays the cosine similarity between each combination. Open the file to look at it by clicking on the link for  or by using the command below in the terminal.
+1. In the repository, we have a Python program that uses a Tokenizer and Model to create embeddings for three terms that you input. It then computes and displays the cosine similarity between each combination. Open the file to look at it by clicking on [**simple_vectors.py**](./simple_vectors.py) or by using the command below in the terminal.
 ```
 code simple_vectors.py
 ```
-2. Let's run the program. As we did for the tokenizer example, we'll pass in a model to use. We'll also pass in a second argument which is the number of dimensions from the vector for each term to show. Run the program with the command below.
+2. Let's run the program. As we did for the tokenizer example, we'll pass in a model to use. We'll also pass in a second argument which is the number of dimensions from the vector for each term to show. Run the program with the command below. You can wait to enter terms until the next step.
 ```
 python simple_vectors.py bert-base-cased 5
 ```
+![vectors program run](./images/gaidd16.png?raw=true "vectors program run")
+
 3. The command we just ran loads up the bert-base-cased model and tells it to show the first 5 dimensions of each vector for the terms we enter. The program will be prompting you for three terms. Enter each one in turn. You can try two closely related words and one that is not closely related. For example
    - king
    - queen
    - duck
 
+![vectors program inputs](./images/gaidd17.png?raw=true "vectors program inputs")
+
 4. Once you enter the terms, you'll see the first 5 dimensions for each term. And then you'll see the cosine similarity displayed between each possible pair. This is how similar each pair of words is. The two that are most similar should have a higher cosine similarity "score".
+
+![vectors program outputs](./images/gaidd18.png?raw=true "vectors program outputs")
 
 5. Each vector in the bert-based models have 768 dimensions. Let's run the program again and tell it to display 768 dimensions for each of the three terms.  Also, you can try another set of terms that are more closely related, like *multiplication*, *division*, *addition*.
 ```
-python simple_vectors.py bert-base-cased 5
+python simple_vectors.py bert-base-cased 768
 ```
-6. You should see that the cosine similarities for all pair combinations are high this time.
+6. You should see that the cosine similarities for all pair combinations are not as far apart this time.
+![vectors program second outputs](./images/gaidd19.png?raw=true "vectors program second outputs")
 
-7. As part of the output from the program, you'll also see the *token id* for each term. If you're using the same model as you did in lab 2 for tokenization, the ids will be the same. You can actually see where these mappings are stored if you look at the model on Hugging Face. For instance, for the *bert-base-cased* model, you can go to https://huggingface.co and search for bert-base-cased. Select the entry for google-bert/bert-base-cased.
+7. As part of the output from the program, you'll also see the *token id* for each term. (It is above the print of the dimensions. If you don't want to scroll through all the dimensions, you can just run it again with a small number of dimensions like we did in step 2.) If you're using the same model as you did in lab 2 for tokenization, the ids will be the same. 
 
-8. On the page for the model, click on the *Files* tab. Then find the file *tokenizer.json* and click on it. The file will be too large to display, so click on the *check the raw version* link to see the actual content.
+![token id](./images/gaidd20.png?raw=true "token id")
+
+8. You can actually see where these mappings are stored if you look at the model on Hugging Face. For instance, for the *bert-base-cased* model, you can go to https://huggingface.co and search for bert-base-cased. Select the entry for google-bert/bert-base-cased.
+
+![finding model](./images/gaidd21.png?raw=true "finding model")
+
+8. On the page for the model, click on the *Files and versions* tab. Then find the file *tokenizer.json* and click on it. The file will be too large to display, so click on the *check the raw version* link to see the actual content.
+
+![selecting tokenizer.json](./images/gaidd22.png?raw=true "selecting tokenizer.json")
+![opening file](./images/gaidd23.png?raw=true "opening file")
 
 9. You can search for the terms you entered previously with a Ctrl-F or Cmd-F and find the mapping between the term and the id. If you look for "##" you'll see mappings for parts of tokens like you may have seen in lab 2.
 
-10. If you want, you can try running the *simple_vectors.py* program with a different model to see results from other models.
-11. We can also try words that are very close like *embeddings*, *tokenization*, *subwords*.
+![finding terms in file](./images/gaidd24.png?raw=true "finding terms in files")
 
-12. TO-DO: see if you can figure out how to load a quantized model with 4 bit or such in simple_vectors.py and then show dimensions having less digits.
+10. If you want, you can try running the *simple_vectors.py* program with a different model to see results from other models (such as we used in lab 2) and words that are very close like *embeddings*, *tokenization*, *subwords*.
+
 
 
 
